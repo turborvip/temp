@@ -13,7 +13,10 @@ app.use(express.static(path.join(__dirname, "/static")));
 
 app.get('/', (req, res) => {
     // res.sendfile("src/views/home.html");
-    res.render("home");
+    // res.render("home");
+
+    res.json({ data: { id: 1, name: "turborvip",priority:"Low" } })
+
 });
   
 const server = app.listen(process.env.PORT, () => {
