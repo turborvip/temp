@@ -15,6 +15,6 @@ app.use(express.static(path.join(__dirname, "/static")));
 app.use('/', router);
 
   
-const server = app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT||4000, () => {
     console.log(`Express running → PORT ${server.address().port}`);
 });
