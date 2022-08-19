@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const path = require('path');
+require('../config/connectDB')
+const router = require("./routers/router");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -10,14 +12,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, "/static")));
 
+app.use('/', router);
 
-app.get('/', (req, res) => {
-    // res.sendfile("src/views/home.html");
-    // res.render("home");
-
-    res.json({ data: { id: 1, name: "turborvip",priority:"Low" } })
-
-});
   
 const server = app.listen(process.env.PORT, () => {
     console.log(`Express running → PORT ${server.address().port}`);
